@@ -1,0 +1,30 @@
+id: org.flatpak.Hello
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+# sdk-extensions:
+# - org.freedesktop.Sdk.Extensions.nixflatpak
+# add-extensions:
+#     org.freedesktop.Sdk.Extensions.nixflatpak:
+#         directory: ../
+#         version: '23.08'
+
+command: hello
+modules:
+  - name: hello
+    buildsystem: simple
+    build-commands:
+      # - sh <(curl -L https://nixos.org/nix/install) --no-daemon
+      # - nix-env -iA cowsay
+      # - nix copy --to file://app/nix/ nixpkgs#cowsay
+      - install -Dm755 hello.sh /app/bin/hello
+    sources:
+      - type: script
+        dest-filename: hello.sh
+        commands:
+          - echo "Hello world, from a sandbox"
+
+  # - name: nix
+  #   buildsystem: simple
+  #   build-commands:
+  #   - 
