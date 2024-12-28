@@ -1,9 +1,0 @@
-#! /nix/store/p6k7xp1lsfmbdd731mlglrdj2d66mr82-bash-5.2p37/bin/bash -e
-COWPATH=${COWPATH:+':'$COWPATH':'}
-if [[ $COWPATH != *':''/nix/store/pgi56kg7qkbak3vkjm54012adx42kynz-cowsay-3.8.3/share/cowsay/cows'':'* ]]; then
-    COWPATH=$COWPATH'/nix/store/pgi56kg7qkbak3vkjm54012adx42kynz-cowsay-3.8.3/share/cowsay/cows'
-fi
-COWPATH=${COWPATH#':'}
-COWPATH=${COWPATH%':'}
-export COWPATH
-exec -a "$0" "/nix/store/pgi56kg7qkbak3vkjm54012adx42kynz-cowsay-3.8.3/bin/.cowsay-wrapped"  "$@" 
